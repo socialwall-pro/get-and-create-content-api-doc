@@ -43,3 +43,109 @@ Will return the last 10 *accepted* messages following the message with id 907222
 `messageId` : id of the message from which you will get the following
 `number` : number of *accepted* messages you want to obtain.
 
+### Result
+Set of messages in JSON format
+
+#### Example
+```
+{
+  "result": true,
+  "messages": [
+    {
+      "tweetId": null,
+      "mediaJsons": [
+        {
+          "mediaType": 2,
+          "relativeMediaURL": "//pic.tezaki.com/atotwp/55895/1544094750745-670881861.jpg",
+          "originalURL": "https://scontent-frx5-1.cdninstagram.com/vp/8197cc36589c6a6cf41950ea62ed532b/5C9FEF50/t51.2885-15/e35/46730663_2575454119162030_8215657494427739618_n.jpg",
+          "localURL": "55895/1544094750745-670881861.jpg"
+        }
+      ],
+      "sent": true,
+      "moderationLevel": 0,
+      "avatarMediaJson": {
+        "mediaType": 0,
+        "relativeMediaURL": "https://scontent-frx5-1.cdninstagram.com/vp/d0e6fc07595d03a8672fe2ce63942c6b/5C97C1A9/t51.2885-19/s150x150/46271169_753176581683811_6773271547298709504_n.jpg",
+        "originalURL": "https://scontent-frx5-1.cdninstagram.com/vp/d0e6fc07595d03a8672fe2ce63942c6b/5C97C1A9/t51.2885-19/s150x150/46271169_753176581683811_6773271547298709504_n.jpg",
+        "localURL": null,
+        "twitterUserId": 0,
+        "twitterUserScreenName": "adababyyyyy",
+        "twitterUserName": "Ada Baby"
+      },
+      "highlightType": null,
+      "validated": true,
+      "mediaTreated": true,
+      "avatarMediaTreated": true,
+      "creationDate": 1544049595000,
+      "text": "In love ☀☀",
+      "grabOrigin": "Instagram",
+      "vote": false,
+      "retweetCount": null,
+      "lang": null,
+      "tagJsons": null,
+      "stringMessageId": "1927950199376995079",
+      "bannedTopRetweet": false,
+      "inReplyStringMessageId": null,
+      "stringTweetId": "1927950199376995079",
+      "tags": {
+        "instagram": "Instagram",
+        "accepted": "Accepted"
+      },
+      "type": "instagram",
+      "sentAt": 1544097830836,
+      "customHighlight": null,
+      "socket": null,
+      "search": false,
+      "moderated": true,
+      "moderatedAt": 1544097842633
+    },
+    {
+      "tweetId": null,
+      "mediaJsons": [
+        {
+          "mediaType": 2,
+          "relativeMediaURL": "//pic.tezaki.com/atotwp/55895/1544093340530-341508167.jpg",
+          "originalURL": "https://scontent-prg1-1.cdninstagram.com/vp/bd5208c959853a379fe0860c87a26ba5/5CA52421/t51.2885-15/e35/46399770_376376476257419_4716033363303365782_n.jpg?_nc_ht=scontent-prg1-1.cdninstagram.com",
+          "localURL": "55895/1544093340530-341508167.jpg"
+        }
+      ],
+      "sent": true,
+      "moderationLevel": 0,
+      "avatarMediaJson": {
+        "mediaType": 0,
+        "relativeMediaURL": "https://scontent-prg1-1.cdninstagram.com/vp/8a4a692a77ac3d44ed68c85336613da7/5C8ECBC1/t51.2885-19/s150x150/38812824_1726960147433498_4819909498976075776_n.jpg",
+        "originalURL": "https://scontent-prg1-1.cdninstagram.com/vp/8a4a692a77ac3d44ed68c85336613da7/5C8ECBC1/t51.2885-19/s150x150/38812824_1726960147433498_4819909498976075776_n.jpg",
+        "localURL": null,
+        "twitterUserId": 0,
+        "twitterUserScreenName": "__alo",
+        "twitterUserName": "🌺Aloha"
+      },
+      "highlightType": null,
+      "validated": true,
+      "mediaTreated": true,
+      "avatarMediaTreated": true,
+      "creationDate": 1544036288000,
+      "text": "Riflessi. 🌬  #nord#scandinavia#sweden#stockholm #mornings",
+      "grabOrigin": "Instagram",
+      "vote": false,
+      "retweetCount": null,
+      "lang": null,
+      "tagJsons": null,
+      "stringMessageId": "1927838572843158768",
+      "bannedTopRetweet": false,
+      "inReplyStringMessageId": null,
+      "stringTweetId": "1927838572843158768",
+      "tags": {
+        "instagram": "Instagram",
+        "accepted": "Accepted"
+      },
+      "type": "instagram",
+      "sentAt": 1544097830836,
+      "customHighlight": null,
+      "socket": null,
+      "search": false,
+      "moderated": true,
+      "moderatedAt": 1544097835803
+    },...
+```
+
