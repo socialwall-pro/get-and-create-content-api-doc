@@ -1,44 +1,49 @@
 # SocialWall Pro - Get and Create Content API Documentation
 
+## Endpoints
+[Get Content API](#get-content-api)
+- [GET api/event/{wallId}/messages/{number}](#get-apieventwallidmessagesnumber)
+- [GET api/event/{wallId}/messages/last/{messageId}/{number}](#get-apieventwallidmessageslastmessageidnumber)
+
+[Create Content API](#create-content-api)
+- [POST api/event/inject](#post-apieventinject)
+- [POST api/event/inject/{wallId}](#post-apieventinjectwallid)
+
+
 ## Get Content API
 
 ### API Access and usage
 
-Get Content API must be enabled on your account to be used. Contact our team using the [contact form](https://www.socialwallpro.com/contact) or our chat system on our [website](https://www.socialwallpro.com).
+Get Content API must be enabled on your account to be used. Contact our team using the [contact form](https://www.socialwallpro.com/contact) or our chat system on our [website](https://www.socialwallpro.com). Get Content API is part of our Premium offer.
 
 Note that only *accepted* messages will be returned. If the Manual Moderation is enabled, first accept messages before calling the API to get messages back.
 
 Caller has to check if the messages returned have already been received.
 
-### Endpoint
-- [GET api/event/{id}/messages/{number}](#get-apieventidmessagesnumber)
-- [GET api/event/{id}/messages/last/{messageId}/{number}](#get-apieventidmessageslastmessageidnumber)
-
-
-#### GET api/event/{wallId}/messages/{number}
+### GET api/event/{wallId}/messages/{number}
 
 Return the last `number` *accepted* messages for the wall number `wallId`
 
-##### Example
+#### Example
 `https://tool.socialwallpro.com/api/event/9074/messages/10`
 
 Will return the last 10 *accepted* messages.
 
-##### Parameters
+#### Parameters
 
-`wallId` : id of the Wall from which you want to obtain the accepted messages. You can find that wallId in the URL of your Wall while in the Tool.
+`wallId` : id of the Wall from which you want to obtain the accepted messages. You can find that `wallId in the URL of your Wall while in the Tool.
 `number` : number of *accepted* messages you want to obtain. Note that you'll get always the last ones. If you want to paginate, use the [paginated version](#get-apieventidmessageslastmessageidnumber) of this API.
 
-#### GET api/event/{id}/messages/last/{messageId}/{number}
+### GET api/event/{wallId}/messages/last/{messageId}/{number}
 
 Return the last `number` *accepted* messages for the wall number `id` started the message `messageId`
 
-##### Example
+#### Example
 `https://tool.socialwallpro.com/api/event/9074/messages/last/907222538828369920/10`
 
 Will return the last 10 *accepted* messages following the message with id 907222538828369920.
 
-##### Parameters
+#### Parameters
 `wallId` : id of the Wall from which you want to obtain the accepted messages. You can find that wallId in the URL of your Wall while in the Tool.
 `messageId` : id of the message from which you will get the following
 `number` : number of *accepted* messages you want to obtain.
@@ -149,3 +154,142 @@ Set of messages in JSON format
     },...
 ```
 
+## Create Content API
+
+### API access and usage
+
+Create Content API needs an *API key* to be used. Contact our team using the [contact form](https://www.socialwallpro.com/contact) or our chat system on our [website](https://www.socialwallpro.com) to get it. Create Content API is part of our Premium offer.
+
+*API key* put it in the `header request` under the `x-api-key` key or as an URL argument using `api_key` key.
+
+Arguments must be passed in JSON format. The following table shows what fields are mandatory/optional and the format to be used.
+
+All injected Web Messages are available under the Manual Moderation panel (if enabled) or under the Message Review panel.
+
+
+### POST api/event/inject
+
+Inject the Web Message in all your Walls not yet stopped (so in preparation or activated or running)
+
+#### Example
+
+`POST https://tool.socialwallpro.com/api/event/inject/123`
+
+```{
+    "text": "Hello World",
+    "avatarName": "socialwallpro",
+    "realName": "SocialWall Pro",
+    "mediaUrl": "https://pbs.twimg.com/media/DzTH_6kXgAEswfw.png:large"
+}
+```
+
+#### Parameters
+
+`avatarName` (string - mandatory) : unique identifier of the user
+`realName` (string - optional - default: "Web Message") : display name
+`text` (string) : message itself
+`mediaURL` (URL - optional) : URL of an hosted media
+
+### POST api/event/inject/{wallId}
+
+Inject the Web Message in the Wall corresponding the `wallId` if the Wall is not stopped (so in preparation or activated or running).
+
+#### Example
+
+`POST https://tool.socialwallpro.com/api/event/inject/123`
+
+```{
+    "text": "Hello World",
+    "avatarName": "socialwallpro",
+    "realName": "SocialWall Pro",
+    "mediaUrl": "https://pbs.twimg.com/media/DzTH_6kXgAEswfw.png:large"
+}
+```
+
+#### Parameters
+
+`wallId` : id of the Wall in which you want to inject the message. You can find that `wallId` in the URL of your Wall while in the Tool.
+
+`avatarName` (string - mandatory) : unique identifier of the user
+`realName` (string - optional - default: "Web Message") : display name
+`text` (string) : message itself
+`mediaURL` (URL - optional) : URL of an hosted media
+
+## Result
+
+### Success
+```
+{
+    "error": false,
+    "injected": [
+        912
+    ]
+}
+```
+
+If no `wallId` is specified during the request, injected array will list all the Walls ids where the Web Message has been injected into.
+If a `wallId` is specified during the request, injected array will contain only that specific id.
+
+### Error messages
+
+Mandatory field missing
+```{
+   "error": true,
+   "message" : "Mandatory field missing"
+}
+```
+
+Media URL is not a valid URL
+```{
+    "error": true,
+    "message": "The media URL provided isn't a valid URL"
+}
+```
+
+JSon not valid
+```
+{
+   "error": true,
+   "message": "Request malformed"
+}
+```
+
+API key is invalid
+```
+{
+    "error": true,
+    "message": "API Key is incorrect"
+}
+```
+
+API key is not provided
+```
+{
+    "error": true,
+    "message": "API Key is missing (from header or query string)"
+}
+```
+
+If you user doesn’t own that Wall with that `wallId`
+```
+{
+    "error": true,
+    "message": "You can't use that event"
+}
+```
+
+If Wall with `wallId` does not exist in the system
+```
+{
+    "error": true,
+    "message": "Event not found"
+}
+```
+
+If Wall with `wallId` is already stopped
+```
+{
+    "error": true,
+    "message": "You can't use that event (event is stopped)"
+}
+```
