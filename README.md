@@ -31,7 +31,8 @@ Will return the last 10 *accepted* messages.
 
 #### Parameters
 
-`wallId` : id of the Wall from which you want to obtain the accepted messages. You can find that `wallId in the URL of your Wall while in the Tool.
+`wallId` : id of the Wall from which you want to obtain the accepted messages. You can find that `wallId` in the URL of your Wall while in the Tool.
+
 `number` : number of *accepted* messages you want to obtain. Note that you'll get always the last ones. If you want to paginate, use the [paginated version](#get-apieventidmessageslastmessageidnumber) of this API.
 
 ### GET api/event/{wallId}/messages/last/{messageId}/{number}
@@ -45,7 +46,9 @@ Will return the last 10 *accepted* messages following the message with id 907222
 
 #### Parameters
 `wallId` : id of the Wall from which you want to obtain the accepted messages. You can find that wallId in the URL of your Wall while in the Tool.
+
 `messageId` : id of the message from which you will get the following
+
 `number` : number of *accepted* messages you want to obtain.
 
 ### Result
@@ -175,7 +178,8 @@ Inject the Web Message in all your Walls not yet stopped (so in preparation or a
 
 `POST https://tool.socialwallpro.com/api/event/inject/123`
 
-```{
+```
+{
     "text": "Hello World",
     "avatarName": "socialwallpro",
     "realName": "SocialWall Pro",
@@ -186,8 +190,11 @@ Inject the Web Message in all your Walls not yet stopped (so in preparation or a
 #### Parameters
 
 `avatarName` (string - mandatory) : unique identifier of the user
+
 `realName` (string - optional - default: "Web Message") : display name
+
 `text` (string) : message itself
+
 `mediaURL` (URL - optional) : URL of an hosted media
 
 ### POST api/event/inject/{wallId}
@@ -198,7 +205,8 @@ Inject the Web Message in the Wall corresponding the `wallId` if the Wall is not
 
 `POST https://tool.socialwallpro.com/api/event/inject/123`
 
-```{
+```
+{
     "text": "Hello World",
     "avatarName": "socialwallpro",
     "realName": "SocialWall Pro",
@@ -210,9 +218,13 @@ Inject the Web Message in the Wall corresponding the `wallId` if the Wall is not
 
 `wallId` : id of the Wall in which you want to inject the message. You can find that `wallId` in the URL of your Wall while in the Tool.
 
+
 `avatarName` (string - mandatory) : unique identifier of the user
+
 `realName` (string - optional - default: "Web Message") : display name
+
 `text` (string) : message itself
+
 `mediaURL` (URL - optional) : URL of an hosted media
 
 ## Result
@@ -233,14 +245,16 @@ If a `wallId` is specified during the request, injected array will contain only 
 ### Error messages
 
 Mandatory field missing
-```{
+```
+{
    "error": true,
    "message" : "Mandatory field missing"
 }
 ```
 
 Media URL is not a valid URL
-```{
+```
+{
     "error": true,
     "message": "The media URL provided isn't a valid URL"
 }
