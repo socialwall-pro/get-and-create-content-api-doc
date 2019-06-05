@@ -1,3 +1,5 @@
+![SocialWall Pro](https://www.socialwallpro.com/files/design/socialwallpro_logo_800px.png)
+
 # SocialWall Pro - Get and Create Content API Documentation
 
 ## Endpoints
@@ -32,6 +34,8 @@ Will return the last 10 *accepted* messages.
 #### Parameters
 
 `wallId` : id of the Wall from which you want to obtain the accepted messages. You can find that `wallId` in the URL of your Wall while in the Tool.
+
+![wallId](https://www.socialwallpro.com/files/Image/20190605-wallid.png?uniqID=54548)
 
 `number` : number of *accepted* messages you want to obtain. Note that you'll get always the last ones. If you want to paginate, use the [paginated version](#get-apieventidmessageslastmessageidnumber) of this API.
 
@@ -187,6 +191,8 @@ Inject the Web Message in all your Walls not yet stopped (so in preparation or a
 }
 ```
 
+![Injected Message](https://www.socialwallpro.com/files/Image/20190605-api-injection.png)
+
 #### Parameters
 
 `avatarName` (string - mandatory) : unique identifier of the user
@@ -214,9 +220,13 @@ Inject the Web Message in the Wall corresponding the `wallId` if the Wall is not
 }
 ```
 
+
 #### Parameters
 
 `wallId` : id of the Wall in which you want to inject the message. You can find that `wallId` in the URL of your Wall while in the Tool.
+
+![wallId](https://www.socialwallpro.com/files/Image/20190605-wallid.png?uniqID=54548)
+
 
 
 `avatarName` (string - mandatory) : unique identifier of the user
